@@ -1,0 +1,78 @@
+---
+  swagger: '2.0'
+  info:
+    version: 0.0.0
+    title: Fiche de paie
+    description: Une API calculant le décompte d'une fiche de paie à partir du descriptif d'une situation d'emploi spécifique.
+    termsOfService: http://paie.sgmap.fr/terms/
+    contact:
+      name: Équipe Fiche de Paie Simplifiée
+      email: paie@sgmap.fr
+      url: http://paie.sgmap.fr
+    license:
+      name: AGPL
+      url: http://github.com/sgmap/paie
+  host: paie.sgmap.fr
+  basePath: /api
+  schemes:
+    - http
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  paths:
+    /net:
+      get:
+        description: Calcule le salaire net d'un salarié.
+        operationId: calculateNet
+        produces:
+          - application/json
+          - application/xml
+          - text/xml
+          - text/html
+        parameters:
+          -
+            name: brut
+            in: query
+            description: Salaire brut du salarié
+            required: false
+            type: integer
+            format: int32
+          -
+            name: imposable
+            in: query
+            description: Salaire imposable du salarié
+            required: false
+            type: integer
+            format: int32
+        responses:
+          200:
+            description: Salaire net.
+            schema:
+              type: integer
+              format: int32
+          400:
+            description: Aucun salaire spécifié.
+            schema:
+              $ref: '#/definitions/errorModel'
+          409:
+            description: |
+              Les paramètres donnés sont conflictuels.
+              Par exemple, vous avez spécifié à la fois brut et imposable.
+            schema:
+              $ref: '#/definitions/errorModel'
+          default:
+            description: unexpected error
+            schema:
+              $ref: '#/definitions/errorModel'
+  definitions:
+    errorModel:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
