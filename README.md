@@ -22,12 +22,20 @@ It is a frequently iterated-over prototype and you should not rely on any parts 
 However, feel free to comment and send feedback or advice at any time. Your input will be useful to direct the following iterations.
 
 
+Stack
+-----
+
+Paie is a [Swagger](http://swagger.io)-compliant RESTful API. It respects the [Swagger 2.0 spec](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md).
+
+You don't have to know what Swagger is to use this API, but you really should have a quick look at it. Defining an API through a standard allows for a lot of nice [automated client generation and validation](https://github.com/swagger-api/swagger-spec#see-it-in-action).
+
+- - - - - -
+
 Governance
 ----------
 
 The Paie API is being developed by a State Startup within the French government. Its main aim is to simplify the edition of payslips. It is free open-source software, and you are welcome to contribute to it.
 
-- - - - - -
 
 License
 -------
