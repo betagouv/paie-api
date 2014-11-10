@@ -2,7 +2,20 @@
   "name": "paie-api",
   "version": "0.0.0",
   "description": "The Paie API calculates all the taxes applicable to a salary in France.",
-  "main": "index.js",
+  "keywords": [ "payslip", "opendata", "tax", "France" ],
+  "homepage": "https://github.com/sgmap/paie-api",
+  "bugs": "https://github.com/sgmap/paie-api/issues",
+  "author": "Matti Schneider <matti.schneider@data.gouv.fr>",
+  "license": "AGPL",
+
+  "engines" : {
+    "node" : ">=0.10.0",
+    "npm" : ">=1.3 <2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sgmap/paie-api.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "swagger-tools": "~0.6.12",
@@ -11,21 +24,5 @@
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
     "test": "npm run compile && swagger-tools validate swagger.json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/sgmap/paie-api.git"
-  },
-  "keywords": [
-    "payslip",
-    "opendata",
-    "tax",
-    "France"
-  ],
-  "author": "Matti Schneider <matti.schneider@data.gouv.fr>",
-  "license": "AGPL",
-  "bugs": {
-    "url": "https://github.com/sgmap/paie-api/issues"
-  },
-  "homepage": "https://github.com/sgmap/paie-api"
+  }
 }
