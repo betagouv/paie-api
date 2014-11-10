@@ -5,6 +5,8 @@ The Paie API calculates all the taxes applicable to a salary in France.
 
 It takes as inputs the description of an employer, an employee and her work hours in a given month, and outputs a breakdown of all applicable taxes, their base and actual value.
 
+[![Build Status](https://travis-ci.org/sgmap/paie-api.svg?branch=master)](https://travis-ci.org/sgmap/paie-api)
+
 
 Aims
 ----
