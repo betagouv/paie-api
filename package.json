@@ -19,10 +19,11 @@
   "dependencies": {},
   "devDependencies": {
     "swagger-tools": "~0.6.12",
-    "js-yaml": "^3.2.2"
+    "js-yaml": "^3.2.2",
+    "david": "^5.0.0"
   },
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
-    "test": "npm run compile && swagger-tools validate swagger.json"
+    "test": "npm run compile && swagger-tools validate swagger.json && david"
   }
 }
