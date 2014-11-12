@@ -34,7 +34,6 @@
             description: Salaire brut du salarié en centimes
             required: false
             type: integer
-            format: uint16
             minimum: 0
           -
             name: imposable
@@ -42,14 +41,12 @@
             description: Salaire imposable du salarié en centimes
             required: false
             type: integer
-            format: uint16
             minimum: 0
         responses:
           200:
             description: Salaire net en centimes.
             schema:
               type: integer
-              format: uint16
               minimum: 0
             examples:
               application/json: '112043'
