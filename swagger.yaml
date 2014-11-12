@@ -8,7 +8,7 @@
     contact:
       name: Équipe Fiche de Paie Simplifiée
       email: paie@sgmap.fr
-      url: http://paie.sgmap.fr
+      url: http://github.com/sgmap/paie-api/issues
     license:
       name: AGPL
       url: https://www.gnu.org/licenses/agpl-3.0.html
