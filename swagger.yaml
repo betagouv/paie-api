@@ -4,7 +4,7 @@
     version: 0.0.0
     title: Fiche de paie
     description: Une API calculant le décompte d'une fiche de paie à partir du descriptif d'une situation d'emploi spécifique.
-    termsOfService: http://paie.sgmap.fr/terms/
+    termsOfService: http://github.com/sgmap/paie-api#readme
     contact:
       name: Équipe Fiche de Paie Simplifiée
       email: paie@sgmap.fr
