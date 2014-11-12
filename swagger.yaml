@@ -11,7 +11,7 @@
       url: http://paie.sgmap.fr
     license:
       name: AGPL
-      url: http://github.com/sgmap/paie
+      url: https://www.gnu.org/licenses/agpl-3.0.html
   host: paie.sgmap.fr
   basePath: /api
   schemes:
