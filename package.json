@@ -22,7 +22,9 @@
   },
   "dependencies": {
     "hapi": "^7.0.0",
-    "swaggerize-hapi": "^1.0.0-alpha.5"
+    "swaggerize-hapi": "^1.0.0-alpha.5",
+    "good": "^4.0.0",
+    "good-console": "^2.0.1"
   },
   "devDependencies": {
     "swagger-tools": "~0.6.12",

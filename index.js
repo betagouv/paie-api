@@ -1,22 +1,13 @@
 #!/usr/bin/env node
 
-var Hapi = require('hapi'),
-	Swaggerize = require('swaggerize-hapi');
+var Hapi = require('hapi');
 
-var server = new Hapi.Server(process.env.npm_package_config_port);
+Hapi.Pack.compose(require('./manifest.js'), function(error, pack) {
+	if (error)
+		throw error; // something bad happened loading the plugin
 
-// The mount point is specified by the swagger's `basePath` property.
-server.pack.register({
-	plugin: Swaggerize,
-	options: {
-		api: require('./swagger.json'),
-		handlers: './hapi/handlers',
-		docspath: '/'
-	}
-}, function (error) {
-	server.start(function () {
-		server.plugins.swagger.setHost(server.info.host + ':' + server.info.port);
+	pack.start(function () {
+		for (var serverIndex in pack.servers)
+			console.log('Server running on', pack.servers[serverIndex].info.uri);
 	});
 });
-
-console.log('Server running on', server.info.host + ':' + server.info.port);
