@@ -15,4 +15,5 @@ env:
 after_success:
   - ssh -i paie-bot.sshkey -oStrictHostKeyChecking=no paie@sgmap.fr "killall --user paie node"
   - ssh -i paie-bot.sshkey -oStrictHostKeyChecking=no paie@sgmap.fr "git clone git@github.com:sgmap/paie-api.git"
-  - ssh -i paie-bot.sshkey -oStrictHostKeyChecking=no paie@sgmap.fr "cd paie-api && git pull git@github.com:sgmap/paie-api.git $TRAVIS_BRANCH && npm install && npm config set paie-api:port 15000 && npm start &"
+  - ssh -i paie-bot.sshkey -oStrictHostKeyChecking=no paie@sgmap.fr "cd paie-api && git pull git@github.com:sgmap/paie-api.git $TRAVIS_BRANCH && npm install && npm config set paie-api:port 15000"
+  - ssh -i paie-bot.sshkey -oStrictHostKeyChecking=no paie@sgmap.fr "cd paie-api && npm start &"
