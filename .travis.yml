@@ -12,4 +12,4 @@ env:
     - secure: "oeEVCpi9/mUky/Fc/ZAef5ddxs6fYC7ohjEBdVveWCaxDSIhCMUp7GSoJ9va7yY2nStncNLSQsrApX+/owPSl1XoDXQVmcxeP3VNec2ad5eRpZ3Y4i3twOQ9iCmDYbVVi/OaCs2cN+VHJW7sWC4KE1UERDz5dLxRTukVdXkEHFg="
 
 after_success:
-  - '[ $TRAVIS_BRANCH = master ] && ssh -i paie-bot.sshkey paie@sgmap.fr "killall --user paie node ; git clone git@github.com:sgmap/paie-api.git && npm install && npm config set paie-api:port 15000 && npm start &"'
+  - 'ssh -i paie-bot.sshkey paie@sgmap.fr "killall --user paie node ; git clone git@github.com:sgmap/paie-api.git && npm install && npm config set paie-api:port 15000 && npm start &"'
