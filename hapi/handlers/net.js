@@ -25,7 +25,7 @@ module.exports = {
 				response.source = 'OpenFisca took more than ' + OPENFISCA_RESPONSE_TIMEOUT + 'ms to reply, aborted.';
 				response.code(504);
 			} else if (err) {
-				response.source = '' + err;
+				response.source += err + "\n\nSent following request to OpenFisca:\n" + JSON.stringify(data);
 				response.code(500);
 			} else {
 				response.source = JSON.stringify(body);
