@@ -8,7 +8,11 @@ cd `dirname $0`
 
 killall -u `whoami` node >> log.txt 2>> log.txt	# if we're updating, stop the server
 
-git pull git@github.com:sgmap/paie-api.git ${2:-master}
+git fetch
+
+git checkout --force --detach origin/${2:-master}
+
+git clean --force
 
 npm install
 
