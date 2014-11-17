@@ -33,12 +33,14 @@
     "david": "^5.0.0",
     "tape": "^2.4.2",
     "istanbul": "^0.2.3",
-    "jshint": "^2.4.1",
-    "enjoi": "^0.1.16"
+    "enjoi": "^0.1.16",
+    "mocha": "^2.0.1",
+    "coffee-script": "^1.8.0",
+    "should": "^4.3.0"
   },
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
-    "test": "npm run compile && swagger-tools validate swagger.json && tape test/*.js && tape hapi/tests/*.js && david",
+    "test": "npm run compile && swagger-tools validate swagger.json && mocha && tape hapi/tests/*.js && david",
     "start": "npm run compile && node index"
   }
 }
