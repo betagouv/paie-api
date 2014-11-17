@@ -5,6 +5,8 @@
 # $2 [optional] Git reference to pull. Defaults to master.
 LOG_FILE='../log.txt'
 
+set -x
+
 cd `dirname $0`
 
 echo "`date` Deploying…" >> "$LOG_FILE"
