@@ -38,7 +38,7 @@
   },
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
-    "test": "npm run compile && swagger-tools validate swagger.json && tape hapi/tests/*.js && david",
+    "test": "npm run compile && swagger-tools validate swagger.json && tape test/*.js && tape hapi/tests/*.js && david",
     "start": "npm run compile && node index"
   }
 }
