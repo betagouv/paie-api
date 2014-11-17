@@ -1,5 +1,8 @@
 var request = require('request-json');
 
+var openFiscaMappings = require('../../openFiscaMappings');
+
+
 var client = request.newClient('http://api.openfisca.fr/api/1/');
 
 var OPENFISCA_RESPONSE_TIMEOUT = 10 * 1000;
@@ -15,7 +18,7 @@ module.exports = {
 	get: function calculateNet(req, reply) {
 		var response = reply().hold();
 
-		var data = {"scenarios":[{"test_case":{"familles":[{"parents":["ind0"]}],"foyers_fiscaux":[{"declarants":["ind0"]}],"individus":[{"activite":"Actif occupé","id":"ind0","sali":{"2014-10":1444},"type_sal":"prive_cadre"}],"menages":[{"personne_de_reference":"ind0"}]},"legislation_url":"http://api.openfisca.fr/api/1/default-legislation","period":"month:2014-10"}],"variables":["salbrut","sali","salnet","sal_h_b"]};
+		var data = openFiscaMappings.calculateNet(req.query);
 
 		client.post('calculate', data, { timeout: OPENFISCA_RESPONSE_TIMEOUT }, function(err, res, body) {
 			if (err &&  err.code == 'ETIMEDOUT') {
