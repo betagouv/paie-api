@@ -2,9 +2,16 @@ language: node_js
 node_js:
   - '0.11'
   - '0.10'
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_96a2138000e8_key -iv $encrypted_96a2138000e8_iv -in paie-bot.sshkey.enc -out paie-bot.sshkey -d
+  - chmod 600 paie-bot.sshkey
+
 env:
   global:
     - secure: "jrnPEHlMXAOi6/HS+f/A/1nCIgKq7FqFUU7pQbmtiqn9qr8OWxQ0g38TpcPlBig6Ha9ecZsNW9qDVKqvLgNPt1oIq9+zqYR4gMjtssY7A94emi5bXKFZTbaUjAoWYSJxmDLBv2j9Bj5w7lTgdPSsl8+VR0irgDxSExxArz0KM44="
     - secure: "oeEVCpi9/mUky/Fc/ZAef5ddxs6fYC7ohjEBdVveWCaxDSIhCMUp7GSoJ9va7yY2nStncNLSQsrApX+/owPSl1XoDXQVmcxeP3VNec2ad5eRpZ3Y4i3twOQ9iCmDYbVVi/OaCs2cN+VHJW7sWC4KE1UERDz5dLxRTukVdXkEHFg="
+
 after_success:
-  "[ $TRAVIS_BRANCH = master ] && curl --ftp-create-dirs -T swagger.json -u $FTP_USER:$FTP_PASSWORD ftp://ftp.cluster014.ovh.net/www/api/v1/swagger.json"
+  - '[[ $TRAVIS_BRANCH == master ]] && ssh -i paie-bot.sshkey -oStrictHostKeyChecking=no paie@sgmap.fr "git clone git@github.com:sgmap/paie-api.git --branch $TRAVIS_BRANCH"'
+  - '[[ $TRAVIS_BRANCH == master ]] && ssh -i paie-bot.sshkey -oStrictHostKeyChecking=no paie@sgmap.fr "paie-api/deploy.sh 15000 $TRAVIS_BRANCH"'
