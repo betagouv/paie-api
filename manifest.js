@@ -11,12 +11,6 @@ var MANIFEST = {
 			api			: require('./swagger.json'),
 			handlers	: './hapi/handlers',
 			docspath	: '/'
-		},
-		'good': {
-			reporters: [ {
-				reporter	: require('good-console'),
-				args		: [ { log: '*', request: '*' } ]
-			} ]
 		}
 	}
 };
