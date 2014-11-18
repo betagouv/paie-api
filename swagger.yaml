@@ -66,12 +66,13 @@
               $ref: '#/definitions/errorModel'
   definitions:
     errorModel:
-      required:
-        - code
-        - message
+      type: object
       properties:
         code:
           type: integer
           format: byte
         message:
           type: string
+      required:
+        - code
+        - message
