@@ -8,17 +8,16 @@ var Hapi = require('hapi');
 var pack;
 
 
-/** Starts a Paie-API server.
+/** Initializes the Paie-API server.
 *
 *@param	{Function<error|null, Hapi.Pack>}	A callback that will be called once the server has been started.
 */
-var start = function start(callback) {
-
-	Hapi.Pack.compose(require('./manifest.js'), function(error, pack) {
+function init(callback) {
+	Hapi.Pack.compose(require('./manifest.js'), function(error, newPack) {
 		if (error)
 			return callback(error);
 
-		pack.servers[0].route({
+		newPack.servers[0].route({
 			method: 'GET',
 			path: '/sandbox/{param*}',
 			handler: {
@@ -28,11 +27,46 @@ var start = function start(callback) {
 			}
 		});
 
-		pack.start(function(error) {
-			callback(error, pack);
-		});
-	});
+		pack = newPack;
 
+		callback(null, pack);
+	});
 }
 
+/** Starts the Paie-API server pack.
+* Initializes the server pack if needed.
+*
+*@param	{Function<error|null, Hapi.Pack>}	A callback that will be called once the server has been started.
+*/
+function start(callback) {
+	if (pack)
+		return _start(callback);
+
+	init(function(error, pack) {
+		if (error)
+			return callback(error);
+
+		_start(callback);
+	});
+}
+
+/** Starts the Paie-API server pack, assuming it has already been initialized.
+*
+*@param	{Function<error|null, Hapi.Pack>}	A callback that will be called once the server has been started.
+*@private
+*/
+function _start(callback) {
+	pack.start(function(error) {
+		callback(error, pack);
+	});
+}
+
+/** Stops the Paie-API server.
+*/
+function stop(callback) {
+	pack.stop(callback);
+}
+
+
 exports.start	= start;
+exports.stop	= stop;
