@@ -16,6 +16,9 @@ module.exports = {
 	 * produces: application/json
 	 */
 	get: function calculateNet(req, reply) {
+		if (! req.query.brut && ! req.query.imposable)
+			return reply('You need to provide either "brut" or "imposable" parameters.').code(400);
+
 		var response = reply().hold();
 
 		var data = openFiscaMappings.calculateNet(req.query);
