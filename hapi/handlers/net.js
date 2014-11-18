@@ -24,6 +24,14 @@ module.exports = {
 			return reply(JSON.stringify(output)).code(400);
 		}
 
+		if (req.query.brut && req.query.imposable) {
+			var output = {
+				message: 'You need to provide only one of "brut" and "imposable" parameters.'
+			}
+
+			return reply(JSON.stringify(output)).code(409);
+		}
+
 		var response = reply().hold();
 
 		var data = openFiscaMappings.calculateNet(req.query);
