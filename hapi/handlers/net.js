@@ -49,7 +49,7 @@ module.exports = {
 				output.openFiscaRequest = data;
 				code = 502;
 			} else {
-				output = body;
+				output = openFiscaMappings.extractNet(body);
 			}
 
 

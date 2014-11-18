@@ -1,6 +1,9 @@
 /** Transforms Paie API queries to a JSON object that can be sent to the OpenFisca web API.
 */
 
+var ID = 'ind0';
+
+
 function clone(object) {
 	return JSON.parse(JSON.stringify(object));
 }
@@ -13,28 +16,26 @@ function wrap(openFiscaScenario, requestedValues) {
 }
 
 function wrapSinglePerson(openFiscaIndividualValues) {
-	var id = 'ind0';
-
 	var individual = clone(openFiscaIndividualValues);
 
-	individual.id = id;
+	individual.id = ID;
 
 	return	{
 		'test_case': {
 			'familles': [
 				{
-					'parents': [ id ]
+					'parents': [ ID ]
 				}
 			],
 			'foyers_fiscaux': [
 				{
-					'declarants': [ id ]
+					'declarants': [ ID ]
 				}
 			],
 			'individus': [ individual ],
 			'menages': [
 				{
-					'personne_de_reference': id
+					'personne_de_reference': ID
 				}
 			]
 		},
@@ -61,7 +62,7 @@ module.exports = {
 		for (var queryVariable in VARNAMES_MAPPING) {
 			if (params[queryVariable] !== undefined) {	// allow 0
 				var salaries = {};
-				salaries[getCurrentMonthISO()] = Number(params[queryVariable]);
+				salaries[getCurrentMonthISO()] = Number(params[queryVariable]);	// TODO: throw if not parseable as a number
 				openFiscaSituation[VARNAMES_MAPPING[queryVariable]] = salaries;
 			}
 		}
@@ -71,5 +72,9 @@ module.exports = {
 		openFiscaScenario.period = 'month:' + getCurrentMonthISO();
 
 		return wrap(openFiscaScenario, [ 'salbrut', 'sali', 'salnet', 'sal_h_b' ]);
+	},
+
+	extractNet: function(openFiscaReply) {
+		return openFiscaReply.value[0].individus[ID].salnet[getCurrentMonthISO()];
 	}
 }
