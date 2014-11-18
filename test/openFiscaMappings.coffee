@@ -1,5 +1,3 @@
-should = require 'should'
-
 mapper = require '../openFiscaMappings'
 
 
