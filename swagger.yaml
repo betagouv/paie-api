@@ -53,26 +53,51 @@
           400:
             description: Aucun salaire spécifié.
             schema:
-              $ref: '#/definitions/errorModel'
+              $ref: '#/definitions/error'
           409:
             description: |
               Les paramètres donnés sont conflictuels.
               Par exemple, vous avez spécifié à la fois brut et imposable.
             schema:
-              $ref: '#/definitions/errorModel'
+              $ref: '#/definitions/error'
+          502:
+            description: Le serveur OpenFisca a répondu par une erreur.
+            schema:
+              $ref: '#/definitions/openFiscaError'
+          504:
+            description: Le serveur OpenFisca a mis trop longtemps à repondre.
+            schema:
+              $ref: '#/definitions/timeoutError'
           default:
             description: unexpected error
             schema:
-              $ref: '#/definitions/errorModel'
+              $ref: '#/definitions/error'
   definitions:
-    errorModel:
+    error:
       type: object
       properties:
-        code:
-          type: integer
-          format: byte
         message:
           type: string
       required:
-        - code
         - message
+    timeoutError:
+      type: object
+      properties:
+        message:
+          type: string
+        timeout:
+          type: integer
+          format: int32
+      required:
+        - message
+        - timeout
+    openFiscaError:
+      type: object
+      properties:
+        openFiscaError:
+          type: object
+        openFiscaRequest:
+          type: object
+      required:
+        - openFiscaError
+        - openFiscaRequest
