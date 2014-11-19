@@ -4,15 +4,14 @@
     version: 0.0.0
     title: Fiche de paie
     description: Une API calculant le décompte d'une fiche de paie à partir du descriptif d'une situation d'emploi spécifique.
-    termsOfService: http://paie.sgmap.fr/terms/
+    termsOfService: http://github.com/sgmap/paie-api#readme
     contact:
       name: Équipe Fiche de Paie Simplifiée
       email: paie@sgmap.fr
-      url: http://paie.sgmap.fr
+      url: http://github.com/sgmap/paie-api/issues
     license:
       name: AGPL
-      url: http://github.com/sgmap/paie
-  host: paie.sgmap.fr
+      url: https://www.gnu.org/licenses/agpl-3.0.html
   basePath: /api
   schemes:
     - http
@@ -23,7 +22,7 @@
   paths:
     /net:
       get:
-        summary: Calcule le salaire net en centimes d'un salarié.
+        summary: Calcule le salaire net en euros d'un salarié.
         operationId: calculateNet
         produces:
           - application/json
@@ -31,50 +30,91 @@
           -
             name: brut
             in: query
-            description: Salaire brut du salarié en centimes
+            description: Salaire brut du salarié en euros
             required: false
-            type: integer
-            format: uint16
+            type: number
             minimum: 0
           -
             name: imposable
             in: query
-            description: Salaire imposable du salarié en centimes
+            description: Salaire imposable du salarié en euros
             required: false
-            type: integer
-            format: uint16
+            type: number
             minimum: 0
         responses:
           200:
-            description: Salaire net en centimes.
+            description: Salaire net en euros.
             schema:
-              type: integer
-              format: uint16
+              type: number
               minimum: 0
             examples:
               application/json: '112043'
           400:
             description: Aucun salaire spécifié.
             schema:
-              $ref: '#/definitions/errorModel'
+              $ref: '#/definitions/validationError'
           409:
             description: |
               Les paramètres donnés sont conflictuels.
               Par exemple, vous avez spécifié à la fois brut et imposable.
             schema:
-              $ref: '#/definitions/errorModel'
+              $ref: '#/definitions/error'
+          502:
+            description: Le serveur OpenFisca a répondu par une erreur.
+            schema:
+              $ref: '#/definitions/openFiscaError'
+          504:
+            description: Le serveur OpenFisca a mis trop longtemps à repondre.
+            schema:
+              $ref: '#/definitions/timeoutError'
           default:
             description: unexpected error
             schema:
-              $ref: '#/definitions/errorModel'
+              $ref: '#/definitions/error'
   definitions:
-    errorModel:
-      required:
-        - code
-        - message
+    error:
+      type: object
       properties:
-        code:
-          type: integer
-          format: byte
         message:
           type: string
+      required:
+        - message
+    validationError:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP error name
+        message:
+          type: string
+          description: Human-readable validation error
+        validation:
+          type: object
+          description: Location of validation error
+          example: {"source":"query","keys":["brut"]}
+      required:
+        - message
+    timeoutError:
+      type: object
+      properties:
+        message:
+          type: string
+        timeout:
+          type: integer
+          format: int32
+      required:
+        - message
+        - timeout
+    openFiscaError:
+      type: object
+      properties:
+        openFiscaError:
+          type: object
+        openFiscaRequest:
+          type: object
+      required:
+        - openFiscaError
+        - openFiscaRequest
