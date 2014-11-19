@@ -53,7 +53,7 @@
           400:
             description: Aucun salaire spécifié.
             schema:
-              $ref: '#/definitions/error'
+              $ref: '#/definitions/validationError'
           409:
             description: |
               Les paramètres donnés sont conflictuels.
@@ -78,6 +78,24 @@
       properties:
         message:
           type: string
+      required:
+        - message
+    validationError:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        error:
+          type: string
+          description: HTTP error name
+        message:
+          type: string
+          description: Human-readable validation error
+        validation:
+          type: object
+          description: Location of validation error
+          example: {"source":"query","keys":["brut"]}
       required:
         - message
     timeoutError:
