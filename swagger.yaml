@@ -23,7 +23,7 @@
   paths:
     /net:
       get:
-        summary: Calcule le salaire net en centimes d'un salarié.
+        summary: Calcule le salaire net en euros d'un salarié.
         operationId: calculateNet
         produces:
           - application/json
@@ -31,22 +31,22 @@
           -
             name: brut
             in: query
-            description: Salaire brut du salarié en centimes
+            description: Salaire brut du salarié en euros
             required: false
-            type: integer
+            type: number
             minimum: 0
           -
             name: imposable
             in: query
-            description: Salaire imposable du salarié en centimes
+            description: Salaire imposable du salarié en euros
             required: false
-            type: integer
+            type: number
             minimum: 0
         responses:
           200:
-            description: Salaire net en centimes.
+            description: Salaire net en euros.
             schema:
-              type: integer
+              type: number
               minimum: 0
             examples:
               application/json: '112043'
