@@ -44,10 +44,16 @@ function wrapSinglePerson(openFiscaIndividualValues) {
 }
 
 function getCurrentMonthISO() {
-	return '2014-11';	// TODO
+	var date = new Date(),
+		month = date.getMonth() + 1;
+
+	return date.getFullYear() + '-' + (month < 10 ? '0' : '') + month;
 }
 
+
 module.exports = {
+	getCurrentMonthISO: getCurrentMonthISO,
+
 	calculateNet: function(params) {
 		var openFiscaSituation = {
 			'activite'	:'Actif occupé',

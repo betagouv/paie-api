@@ -1,3 +1,5 @@
+require 'mootools'
+require 'mootools-more'
 mapper = require '../openFiscaMappings'
 
 
@@ -13,3 +15,7 @@ describe 'OpenFisca mappings', ->
 
 		it 'should properly extract net', ->
 			mapper.extractNet(input).should.equal 80.39421844482422
+
+	describe 'getCurrentMonthISO', ->
+		it 'should output the current month in YYYY-MM format', ->
+			mapper.getCurrentMonthISO().should.equal (new Date()).format('%Y-%m')
