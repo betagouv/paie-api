@@ -23,17 +23,14 @@ describe 'get ' + PATH, ->
 	after	pack.stop
 
 	Object.each
-		200:
-			brut: 100
-		400: {}
-		409:
-			brut		: 100
-			imposable	: 100
-		502:
-			brut		: 'a string'
-		(params, expectedCode) ->
+		'brut=10': 200
+		'imposable=10': 200
+		'': 400
+		'brut=a_string': 400
+		'brut=': 400
+		'brut=10&imposable=10': 409
+		(expectedCode, queryString) ->
 			schema = Enjoi spec.paths[PATH][METHOD].responses[expectedCode].schema, { '#': spec }
-			queryString = Object.toQueryString params
 			query = Object.clone request
 
 			query.url += '?' + queryString
@@ -41,7 +38,7 @@ describe 'get ' + PATH, ->
 			describe 'with parameters ' + queryString, ->
 				it 'should reply ' + expectedCode, (done) ->
 					server.inject query, (res) ->
-						res.statusCode.should.equal Number(expectedCode)
+						res.statusCode.should.equal expectedCode
 						done()
 
 				it 'should respect the schema', (done) ->
