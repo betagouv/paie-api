@@ -16,22 +16,45 @@ module.exports = {
 	 * produces: application/json
 	 */
 	get: function calculateNet(req, reply) {
+		if (! req.query.brut && ! req.query.imposable) {
+			var output = {
+				message: 'You need to provide either "brut" or "imposable" parameters.'
+			}
+
+			return reply(JSON.stringify(output)).code(400);
+		}
+
+		if (req.query.brut && req.query.imposable) {
+			var output = {
+				message: 'You need to provide only one of "brut" and "imposable" parameters.'
+			}
+
+			return reply(JSON.stringify(output)).code(409);
+		}
+
 		var response = reply().hold();
 
 		var data = openFiscaMappings.calculateNet(req.query);
 
 		client.post('calculate', data, { timeout: OPENFISCA_RESPONSE_TIMEOUT }, function(err, res, body) {
-			if (err &&  err.code == 'ETIMEDOUT') {
-				response.source = 'OpenFisca took more than ' + OPENFISCA_RESPONSE_TIMEOUT + 'ms to reply, aborted.';
-				response.code(504);
+			var output	= {},
+				code	= res.statusCode;
+
+			if (err && err.code == 'ETIMEDOUT') {
+				output.message = 'OpenFisca took more than ' + OPENFISCA_RESPONSE_TIMEOUT + 'ms to reply, aborted.';
+				output.timeout = OPENFISCA_RESPONSE_TIMEOUT;
+				code = 504;
 			} else if (err) {
-				response.source += err + "\n\nSent following request to OpenFisca:\n" + JSON.stringify(data);
-				response.code(500);
+				output.openFiscaError = err;
+				output.openFiscaRequest = data;
+				code = 502;
 			} else {
-				response.source = JSON.stringify(body);
-				response.code(res.statusCode);
+				output = openFiscaMappings.extractNet(body);
 			}
 
+
+			response.source = JSON.stringify(output);
+			response.code(code);
 			response.send();
 		});
 	}

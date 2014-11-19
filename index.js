@@ -1,13 +1,24 @@
 #!/usr/bin/env node
 
-var Hapi = require('hapi');
-
-Hapi.Pack.compose(require('./manifest.js'), function(error, pack) {
+function log(error, pack) {
 	if (error)
-		throw error; // something bad happened loading the plugin
+		console.error(error);
 
-	pack.start(function () {
-		for (var serverIndex in pack.servers)
-			console.log('Server running on', pack.servers[serverIndex].info.uri);
+	pack.register({
+		plugin: require('good'),
+		options: {
+			reporters: [ {
+				reporter	: require('good-console'),
+				args		: [ { log: '*', request: '*' } ]
+			} ]
+		}
+	}, function(err) {
+		if (err)
+			console.error(err);
 	});
-});
+
+	for (var serverIndex in pack.servers)
+		console.log('Server running on', pack.servers[serverIndex].info.uri);
+}
+
+require('./server.js').start(log);
