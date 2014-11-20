@@ -2,6 +2,16 @@
 
 Here are a few guidelines to ensure your contributions will be merged to the mainline.
 
+If you have any doubt about where your code should fit, have a look at the [architecture](https://github.com/sgmap/paie-api#architecture). If that doesn't answer your concern, open an issue to discuss!  :)
+
+
+Tests
+-----
+
+If you found a bug, add a test case for it. If you add a feature, cover it with tests.
+
+Tests are run with `npm test`.
+
 
 Language
 --------
