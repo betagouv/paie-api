@@ -19,6 +19,8 @@ git checkout --force --detach origin/${2:-master}
 
 git clean --force
 
+git submodule update --init --recursive
+
 npm install
 
 if [[ $# -gt 0 ]]

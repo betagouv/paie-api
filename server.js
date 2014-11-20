@@ -19,10 +19,10 @@ function init(callback) {
 
 		newPack.servers[0].route({
 			method: 'GET',
-			path: '/sandbox/{param*}',
+			path: '/api/doc/{param*}',
 			handler: {
 				directory: {
-					path: 'dist'
+					path: 'swagger-ui/dist'
 				}
 			}
 		});
