@@ -32,8 +32,6 @@ module.exports = {
 			return reply(JSON.stringify(output)).code(409);
 		}
 
-		var response = reply().hold();
-
 		var data = openFiscaMappings.calculateNet(req.query);
 
 		client.post('calculate', data, { timeout: OPENFISCA_RESPONSE_TIMEOUT }, function(err, res, body) {
@@ -53,9 +51,7 @@ module.exports = {
 			}
 
 
-			response.source = JSON.stringify(output);
-			response.code(code);
-			response.send();
+			reply(output).code(code);
 		});
 	}
 };
