@@ -40,7 +40,7 @@
   },
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
-    "test": "npm run compile && swagger-tools validate swagger.json && mocha && david",
+    "test": "mocha && david",
     "start": "npm run compile && node --use_strict index"
   }
 }
