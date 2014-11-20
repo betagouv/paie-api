@@ -1,8 +1,11 @@
+fs		= require 'fs'
+
 require 'mootools'
-Enjoi = require 'enjoi'
+Enjoi	= require 'enjoi'
+Yaml	= require 'js-yaml'
 
 
-spec = require '../../swagger.json'
+spec = Yaml.safeLoad fs.readFileSync __dirname + '/../../swagger.yaml'
 pack = require '../../server.js'
 
 PATH = '/net'

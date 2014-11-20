@@ -21,6 +21,7 @@
     "url": "git://github.com/sgmap/paie-api.git"
   },
   "dependencies": {
+    "js-yaml": "^3.2.2",
     "hapi": "^7.0.0",
     "swaggerize-hapi": "^1.0.0-alpha.6",
     "good": "^4.0.0",
@@ -29,7 +30,6 @@
   },
   "devDependencies": {
     "swagger-tools": "~0.6.12",
-    "js-yaml": "^3.2.2",
     "david": "^5.0.0",
     "enjoi": "^0.1.16",
     "mocha": "^2.0.1",
@@ -40,7 +40,7 @@
   },
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
-    "test": "npm run compile && swagger-tools validate swagger.json && mocha && david",
-    "start": "npm run compile && node --use_strict index"
+    "test": "mocha && david",
+    "start": "node --use_strict index"
   }
 }
