@@ -1,3 +1,8 @@
+var fs		= require('fs');
+
+var Yaml	= require('js-yaml');
+
+
 /** Will be consumed by Hapi.Pack.compose.
 *
 *@see	http://hapijs.com/api#packcomposemanifest-options-callback
@@ -8,7 +13,7 @@ var MANIFEST = {
 	} ],
 	plugins: {
 		'swaggerize-hapi': {
-			api			: require('./swagger.json'),
+			api			: Yaml.safeLoad(fs.readFileSync('./swagger.yaml')),
 			handlers	: './hapi/handlers',
 			docspath	: '/'
 		}
