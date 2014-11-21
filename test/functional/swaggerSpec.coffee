@@ -5,7 +5,7 @@ Swagger	= require('swagger-tools').specs.v2
 
 should	= require 'should'
 
-FILE_PATH = __dirname + '/../swagger.yaml'
+FILE_PATH = 'swagger.yaml'
 
 
 describe 'Swagger spec', ->

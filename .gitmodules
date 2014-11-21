@@ -1,3 +1,6 @@
 [submodule "ui/swagger-ui"]
 	path = ui/swagger-ui
 	url = git://github.com/swagger-api/swagger-ui
+[submodule "homepage"]
+	path = homepage
+	url = git://github.com/sgmap/paie-www

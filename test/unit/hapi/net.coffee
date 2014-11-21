@@ -5,8 +5,8 @@ Enjoi	= require 'enjoi'
 Yaml	= require 'js-yaml'
 
 
-spec = Yaml.safeLoad fs.readFileSync __dirname + '/../../swagger.yaml'
-pack = require '../../server.js'
+spec = Yaml.safeLoad fs.readFileSync 'swagger.yaml'
+pack = require '../../../server.js'
 
 PATH = '/net'
 METHOD = 'get'

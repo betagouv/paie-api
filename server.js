@@ -19,6 +19,14 @@ function init(callback) {
 
 		newPack.servers[0].route([{
 			method: 'GET',
+			path: '/{param*}',
+			handler: {
+				directory: {
+					path: 'homepage'
+				}
+			}
+		}, {
+			method: 'GET',
 			path: '/api/doc/',
 			handler: {
 				file: {
