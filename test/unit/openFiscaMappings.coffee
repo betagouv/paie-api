@@ -1,6 +1,6 @@
 require 'mootools'
 require 'mootools-more'
-mapper = require '../openFiscaMappings'
+mapper = require '../../openFiscaMappings'
 
 
 describe 'OpenFisca mappings', ->

@@ -41,7 +41,7 @@
   },
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
-    "test": "mocha && david",
+    "test": "mocha test/functional && mocha test/unit && david",
     "test-integration": "watai test/integration",
     "start": "node --use_strict index"
   }
