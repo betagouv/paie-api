@@ -17,15 +17,23 @@ function init(callback) {
 		if (error)
 			return callback(error);
 
-		newPack.servers[0].route({
+		newPack.servers[0].route([{
 			method: 'GET',
-			path: '/sandbox/{param*}',
+			path: '/api/doc/',
 			handler: {
-				directory: {
-					path: 'dist'
+				file: {
+					path: 'ui/index.html'
 				}
 			}
-		});
+		}, {
+			method: 'GET',
+			path: '/api/doc/{param*}',
+			handler: {
+				directory: {
+					path: 'ui/swagger-ui/dist'
+				}
+			}
+		}]);
 
 		pack = newPack;
 
