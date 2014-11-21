@@ -36,11 +36,13 @@
     "coffee-script": "^1.8.0",
     "should": "^4.3.0",
     "mootools": "^1.5.1",
-    "mootools-more": "^1.5.1"
+    "mootools-more": "^1.5.1",
+    "watai": "^0.6.2"
   },
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
     "test": "mocha && david",
+    "test-integration": "watai test/integration",
     "start": "node --use_strict index"
   }
 }

@@ -1,0 +1,5 @@
+{
+	"name": "Paie API",
+	"baseURL": "http://paie.sgmap.fr",
+	"browser": "firefox"
+}
