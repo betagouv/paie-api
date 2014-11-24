@@ -71,6 +71,65 @@
             description: unexpected error
             schema:
               $ref: '#/definitions/error'
+
+    /fillon:
+      get:
+        summary: Calcule l'allègement sur les bas salaire dit « Fillon ».
+        operationId: calculateFillon
+        produces:
+          - application/json
+        parameters:
+          -
+            name: brut
+            in: query
+            description: Salaire brut du salarié en euros
+            required: true
+            type: number
+            minimum: 0
+          -
+            name: categorie
+            in: query
+            description: Catégorie du salarié
+            required: true
+            type: string
+            enum:
+              - prive_non_cadre
+              - prive_cadre
+              - public_titulaire_etat
+              - public_titulaire_militaire
+              - public_titulaire_territoriale
+              - public_titulaire_hospitaliere
+              - public_non_titulaire
+          -
+            name: taille
+            in: query
+            description: |
+              Nombre d'employés dans l'entreprise.
+              [WikiPaie](https://wiki.openfisca.fr/index.php/Taille_d%27entreprise)
+            required: true
+            type: number
+            minimum: 0
+        responses:
+          200:
+            description: Allègement Fillon sur les cotisations patronales en euros.
+            schema:
+              type: number
+              minimum: 0
+            examples:
+              application/json: '260'
+          400:
+            description: Aucun salaire spécifié.
+            schema:
+              $ref: '#/definitions/validationError'
+          502:
+            description: Le serveur OpenFisca a répondu par une erreur.
+            schema:
+              $ref: '#/definitions/openFiscaError'
+          504:
+            description: Le serveur OpenFisca a mis trop longtemps à repondre.
+            schema:
+              $ref: '#/definitions/timeoutError'
+
   definitions:
     error:
       type: object
