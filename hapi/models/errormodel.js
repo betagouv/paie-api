@@ -1,5 +1,3 @@
-'use strict';
-
 function errorModel(options) {
 	if (!options) {
 		options = {};
