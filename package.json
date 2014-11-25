@@ -42,7 +42,7 @@
   "scripts": {
     "compile": "js-yaml swagger.yaml > swagger.json",
     "test": "mocha test/functional && mocha test/unit && david",
-    "test-integration": "watai test/integration",
+    "test-integration": "watai test/integration/api && watai test/integration/fillon",
     "start": "node --use_strict index"
   }
 }

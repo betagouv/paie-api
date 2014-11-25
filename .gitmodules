@@ -4,3 +4,6 @@
 [submodule "homepage"]
 	path = homepage
 	url = git://github.com/sgmap/paie-www
+[submodule "fillon"]
+	path = fillon
+	url = git://github.com/sgmap/allegement-fillon.git
