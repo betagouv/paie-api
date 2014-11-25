@@ -35,6 +35,14 @@ function init(callback) {
 			}
 		}, {
 			method: 'GET',
+			path: '/fillon/{param*}',
+			handler: {
+				directory: {
+					path: 'fillon'
+				}
+			}
+		}, {
+			method: 'GET',
 			path: '/api/doc/{param*}',
 			handler: {
 				directory: {
