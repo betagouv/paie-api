@@ -14,7 +14,7 @@ var MANIFEST = {
 	plugins: {
 		'swaggerize-hapi': {
 			api			: Yaml.safeLoad(fs.readFileSync('./swagger.yaml')),
-			handlers	: './hapi/handlers',
+			handlers	: __dirname + '/hapi/handlers',
 			docspath	: '/'
 		}
 	}
