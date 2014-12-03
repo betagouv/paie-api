@@ -23,8 +23,8 @@
   "dependencies": {
     "js-yaml": "^3.2.2",
     "hapi": "^7.0.0",
-    "swaggerize-hapi": "^1.0.0-alpha.6",
-    "good": "4.0.0",
+    "swaggerize-hapi": "^1.0.0-alpha.8",
+    "good": "^4.0.2",
     "good-console": "^2.0.1",
     "request-json": "^0.5.0"
   },
