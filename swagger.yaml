@@ -109,6 +109,13 @@
             required: true
             type: number
             minimum: 0
+          -
+            name: jours
+            in: query
+            description: Nombre de jours rémunérés dans le mois.
+            required: false
+            type: number
+            minimum: 0
         responses:
           200:
             description: Allègement Fillon sur les cotisations patronales en euros.
