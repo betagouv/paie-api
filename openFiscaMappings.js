@@ -90,43 +90,17 @@ module.exports = {
 
 
 	calculateFillon: function(params) {
-		var taille = Number(params.taille);
-
 		var openFiscaSituation = {
-			'type_sal'	: params.type_sal,
-			'salbrut'	: makeMonthly(Number(params.brut))
+			type_sal					: params.type_sal,
+			salbrut						: makeMonthly(Number(params.brut)),
+			effectif_entreprise			: Number(params.taille)
 		};
 
-		var COMPANY_SIZES = [
-			{
-				label	: 'Moins de 10 salariés',
-				min		: 0
-			},
-			{
-				label	: 'De 10 à 19 salariés',
-				min		: 10
-			},
-			{
-				label	: 'De 20 à 249 salariés',
-				min		: 20
-			},
-			{
-				label	: 'Plus de 250 salariés',
-				min		: 250
-			}
-		];
 
-		COMPANY_SIZES.some(function(size) {
-			if (taille >= size.min)
-				openFiscaSituation.taille_entreprise = size.label;
-			else
-				return true;	// stop iteration
-		});
-
-		return wrap(wrapSinglePerson(openFiscaSituation), [ 'alleg_fillon' ]);
+		return wrap(wrapSinglePerson(openFiscaSituation), [ 'allegement_fillon' ]);
 	},
 
 	extractFillon: function(openFiscaReply) {
-		return openFiscaReply.value[0].individus[ID].alleg_fillon[getCurrentMonthISO()];
+		return openFiscaReply.value[0].individus[ID].allegement_fillon[getCurrentMonthISO()];
 	}
 }

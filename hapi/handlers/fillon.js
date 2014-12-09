@@ -4,7 +4,7 @@ var openFiscaMappings	= require('../../openFiscaMappings'),
 	validationError		= require('../models/validationError.js');
 
 
-var client = request.newClient('http://api.openfisca.fr/api/1/');
+var client = request.newClient('http://api-test.openfisca.fr/api/1/');
 
 var OPENFISCA_RESPONSE_TIMEOUT = 10 * 1000;
 

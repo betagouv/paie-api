@@ -11,14 +11,8 @@ describe 'OpenFisca mappings', ->
 		mapper.calculateNet({ brut: 1444 }).should.eql {"scenarios":[{"test_case":{"familles":[{"parents":["ind0"]}],"foyers_fiscaux":[{"declarants":["ind0"]}],"individus":[{"activite":"Actif occupé","id":"ind0","salbrut":{"2014-12":1444},"type_sal":"prive_cadre"}],"menages":[{"personne_de_reference":"ind0"}]},"legislation_url":"http://api.openfisca.fr/api/1/default-legislation","period":"month:2014-12"}],"variables":["salbrut","sali","salnet","sal_h_b"]}
 
 	describe 'taille', ->
-		it 'should be properly wrapped under 10', ->
-			mapper.calculateFillon({ brut: 1444, taille: 1, type_sal: 'prive_cadre' }).should.eql {"scenarios":[{"test_case":{"familles":[{"parents":["ind0"]}],"foyers_fiscaux":[{"declarants":["ind0"]}],"individus":[{"activite":"Actif occupé","id":"ind0","salbrut":{"2014-12":1444},"type_sal":"prive_cadre","taille_entreprise":"Moins de 10 salariés"}],"menages":[{"personne_de_reference":"ind0"}]},"legislation_url":"http://api.openfisca.fr/api/1/default-legislation","period":"month:2014-12"}],"variables":["alleg_fillon"]}
-
-		it 'should be properly wrapped under 20', ->
-			mapper.calculateFillon({ brut: 1444, taille: 15, type_sal: 'prive_cadre' }).should.eql {"scenarios":[{"test_case":{"familles":[{"parents":["ind0"]}],"foyers_fiscaux":[{"declarants":["ind0"]}],"individus":[{"activite":"Actif occupé","id":"ind0","salbrut":{"2014-12":1444},"type_sal":"prive_cadre","taille_entreprise":"De 10 à 19 salariés"}],"menages":[{"personne_de_reference":"ind0"}]},"legislation_url":"http://api.openfisca.fr/api/1/default-legislation","period":"month:2014-12"}],"variables":["alleg_fillon"]}
-
-		it 'should be properly wrapped over 250', ->
-			mapper.calculateFillon({ brut: 1444, taille: 300, type_sal: 'prive_cadre' }).should.eql {"scenarios":[{"test_case":{"familles":[{"parents":["ind0"]}],"foyers_fiscaux":[{"declarants":["ind0"]}],"individus":[{"activite":"Actif occupé","id":"ind0","salbrut":{"2014-12":1444},"type_sal":"prive_cadre","taille_entreprise":"Plus de 250 salariés"}],"menages":[{"personne_de_reference":"ind0"}]},"legislation_url":"http://api.openfisca.fr/api/1/default-legislation","period":"month:2014-12"}],"variables":["alleg_fillon"]}
+		it 'should be properly renamed', ->
+			mapper.calculateFillon({ brut: 1444, taille: 15, type_sal: 'prive_cadre' }).should.eql {"scenarios":[{"test_case":{"familles":[{"parents":["ind0"]}],"foyers_fiscaux":[{"declarants":["ind0"]}],"individus":[{"activite":"Actif occupé","id":"ind0","salbrut":{"2014-12":1444},"type_sal":"prive_cadre","effectif_entreprise":15}],"menages":[{"personne_de_reference":"ind0"}]},"legislation_url":"http://api.openfisca.fr/api/1/default-legislation","period":"month:2014-12"}],"variables":["allegement_fillon"]}
 
 
 	describe 'extractNet', ->
