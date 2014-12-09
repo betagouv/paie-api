@@ -99,8 +99,12 @@ module.exports = {
 			effectif_entreprise			: Number(params.taille)
 		};
 
-		if (params.jours)
+		if (params.jours) {
 			openFiscaSituation.volume_heures_remunerees	= Number(params.jours) * WORK_HOURS_IN_DAY;
+
+			if (params.heuresSup)
+				openFiscaSituation.volume_heures_remunerees += Number(params.heuresSup);
+		}
 
 		return wrap(wrapSinglePerson(openFiscaSituation), [ 'allegement_fillon' ]);
 	},

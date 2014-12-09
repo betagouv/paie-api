@@ -116,6 +116,13 @@
             required: false
             type: number
             minimum: 0
+          -
+            name: heuresSup
+            in: query
+            description: Nombre d'heures supplémentaires rémunérées dans le mois.
+            required: false
+            type: number
+            minimum: 0
         responses:
           200:
             description: Allègement Fillon sur les cotisations patronales en euros.
