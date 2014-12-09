@@ -13,6 +13,8 @@ METHOD = 'get'
 
 
 describe 'get ' + PATH, ->
+	this.timeout 4 * 1000	# leave some time for slow connections
+
 	server = null
 	request =
 		method	: METHOD
