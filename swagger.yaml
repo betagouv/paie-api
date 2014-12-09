@@ -110,6 +110,13 @@
             type: number
             minimum: 0
           -
+            name: heuresParSemaine
+            in: query
+            description: Nombre d'heures travaillées par semaine.
+            required: false
+            type: number
+            minimum: 0
+          -
             name: jours
             in: query
             description: Nombre de jours rémunérés dans le mois.
@@ -120,6 +127,13 @@
             name: heuresSup
             in: query
             description: Nombre d'heures supplémentaires rémunérées dans le mois.
+            required: false
+            type: number
+            minimum: 0
+          -
+            name: heuresNonTravaillees
+            in: query
+            description: Nombre d'heures non travaillées et non rémunérées dans le mois.
             required: false
             type: number
             minimum: 0

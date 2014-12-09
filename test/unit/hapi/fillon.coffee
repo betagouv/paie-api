@@ -29,6 +29,7 @@ describe 'get ' + PATH, ->
 		'brut=1000&categorie=prive_non_cadre&taille=20': 200
 		'brut=1000&categorie=prive_non_cadre&taille=20&jours=10': 200
 		'brut=1000&categorie=prive_non_cadre&taille=20&jours=10&heuresSup=4': 200
+		'brut=1000&categorie=prive_non_cadre&taille=20&heuresNonTravaillees=4': 200
 		'brut=1000': 400
 		'bru=1000&categorie=prive_non_cadre&taille=20': 400
 		(expectedCode, queryString) ->

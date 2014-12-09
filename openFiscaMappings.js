@@ -104,7 +104,12 @@ module.exports = {
 
 			if (params.heuresSup)
 				openFiscaSituation.volume_heures_remunerees += Number(params.heuresSup);
+
+			openFiscaSituation.volume_heures_remunerees = Math.round(openFiscaSituation.volume_heures_remunerees);
 		}
+
+		if (params.heuresNonTravaillees)
+			openFiscaSituation.volume_heures_non_remunerees = Math.round(params.heuresNonTravaillees);
 
 		return wrap(wrapSinglePerson(openFiscaSituation), [ 'allegement_fillon' ]);
 	},
