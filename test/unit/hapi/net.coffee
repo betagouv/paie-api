@@ -13,6 +13,8 @@ METHOD = 'get'
 
 
 describe 'get ' + PATH, ->
+	this.timeout 10 * 1000	# leave some time for slow connections and slow OpenFisca server
+
 	server = null
 	request =
 		method	: METHOD
