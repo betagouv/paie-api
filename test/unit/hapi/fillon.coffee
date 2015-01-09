@@ -12,7 +12,7 @@ PATH = '/fillon'
 METHOD = 'get'
 
 
-xdescribe 'get ' + PATH, ->
+describe 'get ' + PATH, ->
 	this.timeout 10 * 1000	# leave some time for slow connections and slow OpenFisca server
 
 	server = null

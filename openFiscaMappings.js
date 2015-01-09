@@ -40,8 +40,7 @@ function wrapSinglePerson(openFiscaIndividualValues) {
 				}
 			]
 		},
-		'period': 'month:' + getCurrentMonthISO(),
-		'legislation_url': 'http://api.openfisca.fr/api/1/default-legislation'
+		'period': 'month:' + getCurrentMonthISO()
 	}
 }
 
