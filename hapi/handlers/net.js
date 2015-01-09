@@ -43,7 +43,7 @@ module.exports = {
 				output.timeout = OPENFISCA_RESPONSE_TIMEOUT;
 				code = 504;
 			} else if (err) {
-				output.openFiscaError = err;
+				output.openFiscaError = err.toString();
 				output.openFiscaRequest = data;
 				code = 502;
 			} else {
