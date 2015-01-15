@@ -1,3 +1,5 @@
+Description en français [ci-dessous](https://github.com/sgmap/paie-api#fr).
+
 Paie API
 ========
 
@@ -87,3 +89,15 @@ The code for this software is distributed under an [AGPL license](http://www.gnu
 That means you may call the public webservice API as you wish, but may integrate the source code itself only within similarly free open-source software. If you make any changes to the code, even if it is not redistributed and provided only as a webservice, you have to share them back with the community.
 
 Contact the authors if you have any specific need or question regarding licensing.
+
+- - - - - -
+
+
+Description du projet Français
+------------------------------
+
+Ce projet github offre une API pour simplifier les tâches administratives concernant les fiches de paie respectant le système français.
+
+La mission Etalab a lancé, le 1ᵉ octobre 2014, en mode Startup d’État. Pour plus de détails visitez notre site: [paie.sgmap.fr](http://paie.sgmap.fr/).
+
+
