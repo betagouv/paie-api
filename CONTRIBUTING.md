@@ -22,6 +22,6 @@ However, the domain language is French. We consider each tax, collecting organis
 
 ### Example
 
-Where you would write something like `getRectangle` in a drawing app, you should write `getCSG` (“CSG” being a French tax). it is a domain-specific term and may be used directly.
+Where you would write something like `getRectangle` in a drawing app, you should write `getCSG` (“CSG” being a French tax). It is a domain-specific term and may be used directly.
 
 Where you would write something like `getRectangleArea` in a drawing app, you should write `getCSGbase`. “assiette” should be translated to “base”, as it is not a domain-specific term but a technical term that does not have a unique meaning in the given context.
