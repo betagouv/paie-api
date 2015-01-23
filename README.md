@@ -1,11 +1,13 @@
-Description en français [ci-dessous](https://github.com/sgmap/paie-api#fr).
-
 Paie API
 ========
 
 The Paie API calculates all the taxes applicable to a salary in France.
 
 It takes as inputs the description of an employer, an employee and her work hours in a given month, and outputs a breakdown of all applicable taxes, their base and actual value.
+
+> Ce projet offre une API pour simplifier les tâches administratives liées à l'édition de fiches de paie dans le système socio-fiscal français.
+>
+> Pour plus de détails, voyez [paie.sgmap.fr](http://paie.sgmap.fr/).
 
 [![Build Status](https://travis-ci.org/sgmap/paie-api.svg?branch=master)](https://travis-ci.org/sgmap/paie-api)
 
@@ -89,15 +91,3 @@ The code for this software is distributed under an [AGPL license](http://www.gnu
 That means you may call the public webservice API as you wish, but may integrate the source code itself only within similarly free open-source software. If you make any changes to the code, even if it is not redistributed and provided only as a webservice, you have to share them back with the community.
 
 Contact the authors if you have any specific need or question regarding licensing.
-
-- - - - - -
-
-
-Description du projet Français
-------------------------------
-
-Ce projet github offre une API pour simplifier les tâches administratives concernant les fiches de paie respectant le système français.
-
-La mission Etalab a lancé, le 1ᵉ octobre 2014, en mode Startup d’État. Pour plus de détails visitez notre site: [paie.sgmap.fr](http://paie.sgmap.fr/).
-
-
