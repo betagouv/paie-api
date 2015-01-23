@@ -99,16 +99,16 @@ module.exports = {
 		};
 
 		if (params.jours) {
-			openFiscaSituation.volume_heures_remunerees	= Number(params.jours) * WORK_HOURS_IN_DAY;
+			openFiscaSituation.heures_remunerees_volume	= Number(params.jours) * WORK_HOURS_IN_DAY;
 
 			if (params.heuresSup)
-				openFiscaSituation.volume_heures_remunerees += Number(params.heuresSup);
+				openFiscaSituation.heures_remunerees_volume += Number(params.heuresSup);
 
-			openFiscaSituation.volume_heures_remunerees = Math.round(openFiscaSituation.volume_heures_remunerees);
+			openFiscaSituation.heures_remunerees_volume = Math.round(openFiscaSituation.heures_remunerees_volume);
 		}
 
 		if (params.heuresNonTravaillees)
-			openFiscaSituation.volume_heures_non_remunerees = Math.round(params.heuresNonTravaillees);
+			openFiscaSituation.heures_non_remunerees_volume = Math.round(params.heuresNonTravaillees);
 
 		return wrap(wrapSinglePerson(openFiscaSituation), [ 'allegement_fillon' ]);
 	},
