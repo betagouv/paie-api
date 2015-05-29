@@ -9,8 +9,6 @@ It takes as inputs the description of an employer, an employee and her work hour
 >
 > Pour plus de détails, voyez [paie.sgmap.fr](http://paie.sgmap.fr/).
 
-[![Build Status](https://travis-ci.org/sgmap/paie-api.svg?branch=master)](https://travis-ci.org/sgmap/paie-api)
-
 
 Aims
 ----
@@ -21,11 +19,9 @@ Provide an accurate, always up-to-date, detailed breakdown of all taxes applicab
 Status
 ------
 
-**The Paie API is currently in discovery stage.**
+**THE PAIE API AS AN INDEPENDENT SOFTWARE PACKAGE IS DEPRECATED.**
 
-It is a frequently iterated-over prototype and you should not rely on any parts of its specification.
-
-However, feel free to comment and send feedback or advice at any time. Your input will be useful to direct the following iterations.
+It has been superseded by the `/formula` endpoint in [OpenFisca](http://www.openfisca.fr), a global simulator of the French tax-benefit system. See its [API documentation](http://embauche.sgmap.fr/api/doc/).
 
 
 Architecture
