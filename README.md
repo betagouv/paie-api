@@ -7,7 +7,7 @@ It takes as inputs the description of an employer, an employee and her work hour
 
 > Ce projet offre une API pour simplifier les tâches administratives liées à l'édition de fiches de paie dans le système socio-fiscal français.
 >
-> Pour plus de détails, voyez [paie.sgmap.fr](http://paie.sgmap.fr/).
+> Pour plus de détails, voyez [embauche.sgmap.fr](http://embauche.sgmap.fr/).
 
 
 Aims
