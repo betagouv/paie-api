@@ -64,11 +64,8 @@ Tests are written in CoffeeScript. It is a specific use-case where this language
 
 **To deploy to your server, clone the repo or copy the source code, `npm install && npm start`.**
 
-Deployment is handled automatically and continuously through [Travis-CI](https://travis-ci.org/sgmap/paie-api). Any push to the `master` branch will deploy to [paie.sgmap.fr](http://paie.sgmap.fr).
+Install pm2, then use ```./deploy.sh```.
 
-The procedure is described in the `after_success` part of the `.travis.yml` file. Basically, the idea is to login to the server with an [encrypted](http://docs.travis-ci.com/user/encrypting-files/) bot key, `paie-bot.sshkey.enc`. Travis decrypts the key, logs in to the server, clones or pulls the repo, kills the currently running server, and `npm start`s a new one.
-
-If you deploy to another server, you can have a look at `deploy.sh`, but know it makes some important assumptions, such as being the only Node server worthy to be kept alive by the current user. The only magic it does is keeping the code up-to-date, and killing and starting the server.
 
 
 - - - - - -

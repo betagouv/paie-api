@@ -11,7 +11,8 @@ cd `dirname $0`
 
 echo "`date` Deploying…" >> "$LOG_FILE"
 
-killall -u `whoami` node >> "$LOG_FILE" 2>> "$LOG_FILE"	# if we're updating, stop the server
+# killall -u `whoami` node >> "$LOG_FILE" 2>> "$LOG_FILE"	# if we're updating, stop the server
+pm2 stop paie-api
 
 git fetch
 
@@ -27,4 +28,6 @@ if [[ $# -gt 0 ]]
 then npm config set paie-api:port $1	# if not set, will use the default from package.json
 fi
 
-npm start >> "$LOG_FILE" &
+# npm start >> "$LOG_FILE" &
+pm2 start npm --name "paie-api" -- run start
+
